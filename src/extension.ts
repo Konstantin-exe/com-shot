@@ -21,7 +21,9 @@ export function activate(context: vscode.ExtensionContext) {
       vscode.window.showInformationMessage(
         'Your Commit-SnapShot has being saved',
       );
-      vscode.workbench.action.terminal.changeColor;
+      if (process.argv[2] === 'commit') {
+        vscode.window.showWarningMessage('you made a commit');
+      }
     },
   );
 
