@@ -6,24 +6,20 @@ export function activate(context: vscode.ExtensionContext) {
   // process.stdout.write('Hello world!');
   console.log('Hello from console log');
 
-  // Use the console to output diagnostic information (console.log) and errors (console.error)
-  // This line of code will only be executed once when your extension is activated
-  console.log('Congratulations, your extension "com-shot" is now active!');
-
-  // The command has been defined in the package.json file
-  // Now provide the implementation of the command with registerCommand
-  // The commandId parameter must match the command field in package.json
   let disposable = vscode.commands.registerCommand(
     'com-shot.saveCommit',
     () => {
-      // The code you place here will be executed every time your command is executed
-      // Display a message box to the user
+      let createNewTerminal = vscode.window.createTerminal({
+        name: 'My Command',
+        hideFromUser: false,
+        message: 'hello world',
+        shellArgs: 'hello world',
+      });
+      createNewTerminal.show();
+
       vscode.window.showInformationMessage(
         'Your Commit-SnapShot has being saved',
       );
-      if (process.argv[2] === 'commit') {
-        vscode.window.showWarningMessage('you made a commit');
-      }
     },
   );
 
