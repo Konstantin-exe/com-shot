@@ -28,9 +28,12 @@ export function deactivate() {}
 
 /* TODO:
 
-- On "git commit" in terminal extension must run or
-- On "save commit" as VSC command terminal must do a "git commit" and asking for commit
-- all changed files must be snapshoted
-- on git checkout the snapshoted files must open as tabs
+✅ Must open a terminal
+✅ must commit
+❌ commit message must be givin by the user via vsc.form
+❌ all changed files must be snapshoted => open tabs must being saved to RAM or HDD
+❌ on git checkout the snapshoted files must open as tabs
+✅ must show confirmation message
+❌ on error show error message
 
 */
