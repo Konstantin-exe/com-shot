@@ -3,47 +3,27 @@ import * as vscode from 'vscode';
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-  console.log('Hello from console log');
-
-    /*
-    todo: declare type or find callback for sendCommitMessage
-    */
-
-
-  interface TTerminal {
-    vscode.window.activeTerminal: Boolean,
-  }
-
   let disposable = vscode.commands.registerCommand(
     'com-shot.saveCommit',
     () => {
-      let createNewTerminal = vscode.window.createTerminal({
+      let newTerminal = vscode.window.createTerminal({
         name: 'My Command',
-        // todo: set current branch for cwd. cwd: "pathToCurrentBranch"
         hideFromUser: false,
+        // todo: set current branch for cwd. cwd: "pathToCurrentBranch"
       });
-      createNewTerminal.show();
+      newTerminal.show();
 
-      let sendCommitMessage =
-      if (vscode.window.activeTerminal === true) {
-      vscode.window.activeTerminal
-        ? {
-            name: 'My Command',
-            // sendText: 'hello world',
-          }
-        : ;
-      sendCommitMessage.sendText('he');
+      newTerminal.sendText('git commit -m "Test commit"');
+
+      vscode.window.showInformationMessage(
+        'Your Commit-SnapShot has being saved',
+      );
+
+      context.subscriptions.push(disposable);
     },
   );
-
-  vscode.window.showInformationMessage(
-    'Your Commit-SnapShot has being saved',
-  );
-
-  context.subscriptions.push(disposable);
 }
 
-// this method is called when your extension is deactivated
 export function deactivate() {}
 
 /* TODO:
